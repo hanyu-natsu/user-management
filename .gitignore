@@ -44,5 +44,5 @@ computer_vision.egg-info/
 .direnv/
 
 
-# react-dom-router
-.react-router/
+# Vite
+.vite/

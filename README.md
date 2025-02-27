@@ -63,3 +63,7 @@ Stack used:
 - nginx: reverse proxy and static file server
 
 In the docker build the webapp is built and served by nginx. The endpoint `/api` is proxied to the backend.
+
+## Monorepo
+
+The project is done with yarn monorepo. The backend and frontend are in the packages workspace.
