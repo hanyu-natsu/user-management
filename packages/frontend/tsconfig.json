@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/vite-react/tsconfig.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    "paths": {
+      "@app/*": ["./src/*"],
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+    },
+    "rootDirs": [".", "./.react-router/types"]
+  },
+  "include": ["src", "vite.config.ts", ".react-router/types/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

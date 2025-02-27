@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2023", "dom", "es2018.asynciterable"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist"
+  },
+  "include": ["src", "tsconfig.build.json"]
+}

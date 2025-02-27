@@ -1,0 +1,20 @@
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+RUN corepack enable
+
+COPY package.json yarn.lock ./
+
+COPY .yarnrc.yml ./
+
+COPY ./packages/frontend ./packages/frontend
+
+RUN yarn install
+
+RUN yarn workspace frontend build
+
+FROM nginx:1.27-alpine-slim
+
+COPY --from=builder /app/packages/frontend/dist /usr/share/nginx/html
+COPY --from=builder /app/packages/frontend/nginx/default.conf.template /etc/nginx/templates/default.conf.template

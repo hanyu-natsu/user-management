@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN corepack enable
+
+COPY package.json yarn.lock ./
+
+COPY .yarnrc.yml ./
+
+COPY ./packages/backend ./packages/backend
+
+RUN yarn install
+
+RUN yarn workspace backend build
+
+EXPOSE 3000
+
+WORKDIR /app/packages/backend
+
+CMD ["node", "dist/main.js"]

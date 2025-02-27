@@ -1,0 +1,48 @@
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+node_modules
+
+# JetBrains IDEs
+.idea/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Generated output
+dist
+.next
+*.tsbuildinfo
+
+# Env file
+.env
+
+# Balena secrets
+**/.balena/secrets/*
+!**/.balena/secrets/.keep
+
+# Python
+.pyc
+.venv/
+computer_vision.egg-info/
+.direnv/
+
+
+# react-dom-router
+.react-router/

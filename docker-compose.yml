@@ -1,0 +1,36 @@
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: corum
+    ports:
+      - 27017:27017
+    volumes:
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    environment:
+      MONGODB_URL: mongodb://root:example@mongodb:27017/corum
+      JWT_SECRET: corum_test_secret
+      COOKIE_SECRET: corum_cookie_secret
+    depends_on:
+      - mongodb
+    ports:
+      - '3000:3000'
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    environment:
+      BACKEND_HOST: backend
+    depends_on:
+      - backend
+    ports:
+      - '8080:80'
